@@ -1,0 +1,19 @@
+[package]
+name = "TU_USUARIO_WASMER/sideby"
+version = "0.1.0"
+description = "SideBy - Plataforma de compañía virtual y tutorías"
+
+[dependencies]
+"wasmer/static-web-server" = "1"
+
+[fs]
+"/public" = "public"
+"/settings" = "settings"
+
+[[command]]
+name = "script"
+module = "wasmer/static-web-server:webserver"
+runner = "https://webc.org/runner/wasi"
+
+[command.annotations.wasi]
+main-args = ["-w", "/settings/config.toml"]
